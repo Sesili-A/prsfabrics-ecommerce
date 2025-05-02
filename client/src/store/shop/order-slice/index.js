@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -57,10 +58,16 @@ export const getOrderDetails = createAsyncThunk(
   }
 );
 
+=======
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
 const initialState = {
   approvalURL: null,
   isLoading: false,
   orderId: null,
+<<<<<<< HEAD
   orders: [],
   orderDetails: null,
   error: null,
@@ -74,10 +81,73 @@ const orderSlice = createSlice({
       state.orderDetails = null;
       state.approvalURL = null;
       state.error = null;
+=======
+  orderList: [],
+  orderDetails: null,
+};
+
+export const createNewOrder = createAsyncThunk(
+  "/order/createNewOrder",
+  async (orderData) => {
+    const response = await axios.post(
+      "http://localhost:5000/api/shop/order/create",
+      orderData
+    );
+
+    return response.data;
+  }
+);
+
+export const capturePayment = createAsyncThunk(
+  "/order/capturePayment",
+  async ({ paymentId, payerId, orderId }) => {
+    const response = await axios.post(
+      "http://localhost:5000/api/shop/order/capture",
+      {
+        paymentId,
+        payerId,
+        orderId,
+      }
+    );
+
+    return response.data;
+  }
+);
+
+export const getAllOrdersByUserId = createAsyncThunk(
+  "/order/getAllOrdersByUserId",
+  async (userId) => {
+    const response = await axios.get(
+      `http://localhost:5000/api/shop/order/list/${userId}`
+    );
+
+    return response.data;
+  }
+);
+
+export const getOrderDetails = createAsyncThunk(
+  "/order/getOrderDetails",
+  async (id) => {
+    const response = await axios.get(
+      `http://localhost:5000/api/shop/order/details/${id}`
+    );
+
+    return response.data;
+  }
+);
+
+const shoppingOrderSlice = createSlice({
+  name: "shoppingOrderSlice",
+  initialState,
+  reducers: {
+    resetOrderDetails: (state) => {
+      state.orderDetails = null;
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
     },
   },
   extraReducers: (builder) => {
     builder
+<<<<<<< HEAD
       // createNewOrder
       .addCase(createNewOrder.pending, (state) => {
         state.isLoading = true;
@@ -125,6 +195,42 @@ const orderSlice = createSlice({
       .addCase(getOrderDetails.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.orderDetails = payload.data || null;
+=======
+      .addCase(createNewOrder.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(createNewOrder.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.approvalURL = action.payload.approvalURL;
+        state.orderId = action.payload.orderId;
+        sessionStorage.setItem(
+          "currentOrderId",
+          JSON.stringify(action.payload.orderId)
+        );
+      })
+      .addCase(createNewOrder.rejected, (state) => {
+        state.isLoading = false;
+        state.approvalURL = null;
+        state.orderId = null;
+      })
+      .addCase(getAllOrdersByUserId.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getAllOrdersByUserId.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.orderList = action.payload.data;
+      })
+      .addCase(getAllOrdersByUserId.rejected, (state) => {
+        state.isLoading = false;
+        state.orderList = [];
+      })
+      .addCase(getOrderDetails.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getOrderDetails.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.orderDetails = action.payload.data;
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
       })
       .addCase(getOrderDetails.rejected, (state) => {
         state.isLoading = false;
@@ -133,8 +239,14 @@ const orderSlice = createSlice({
   },
 });
 
+<<<<<<< HEAD
 // Export actions
 export const { resetOrderDetails } = orderSlice.actions;
 
 // Export reducer
 export default orderSlice.reducer;
+=======
+export const { resetOrderDetails } = shoppingOrderSlice.actions;
+
+export default shoppingOrderSlice.reducer;
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e

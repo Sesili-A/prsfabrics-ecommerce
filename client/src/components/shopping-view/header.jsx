@@ -28,7 +28,10 @@ function MenuItems() {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+<<<<<<< HEAD
   const { cartItems } = useSelector((state) => state.shopCart);
+=======
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
 
   function handleNavigate(getCurrentMenuItem) {
     sessionStorage.removeItem("filters");
@@ -43,20 +46,34 @@ function MenuItems() {
 
     sessionStorage.setItem("filters", JSON.stringify(currentFilter));
 
+<<<<<<< HEAD
     if (location.pathname.includes("listing") && currentFilter !== null) {
       setSearchParams(new URLSearchParams(`?category=${getCurrentMenuItem.id}`));
     } else {
       navigate(getCurrentMenuItem.path);
     }
+=======
+    location.pathname.includes("listing") && currentFilter !== null
+      ? setSearchParams(
+          new URLSearchParams(`?category=${getCurrentMenuItem.id}`)
+        )
+      : navigate(getCurrentMenuItem.path);
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
   }
 
   return (
     <nav className="flex flex-col mb-3 lg:mb-0 lg:items-center gap-6 lg:flex-row">
       {shoppingViewHeaderMenuItems.map((menuItem) => (
         <Label
+<<<<<<< HEAD
           key={menuItem.id}
           onClick={() => handleNavigate(menuItem)}
           className="text-sm font-medium cursor-pointer"
+=======
+          onClick={() => handleNavigate(menuItem)}
+          className="text-sm font-medium cursor-pointer"
+          key={menuItem.id}
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
         >
           {menuItem.label}
         </Label>
@@ -77,6 +94,7 @@ function HeaderRightContent() {
   }
 
   useEffect(() => {
+<<<<<<< HEAD
     if (user?.id) {
       dispatch(fetchCartItems(user.id));
     }
@@ -85,6 +103,16 @@ function HeaderRightContent() {
   return (
     <div className="flex lg:items-center lg:flex-row flex-col gap-4">
       <Sheet open={openCartSheet} onOpenChange={setOpenCartSheet}>
+=======
+    dispatch(fetchCartItems(user?.id));
+  }, [dispatch]);
+
+  console.log(cartItems, "sangam");
+
+  return (
+    <div className="flex lg:items-center lg:flex-row flex-col gap-4">
+      <Sheet open={openCartSheet} onOpenChange={() => setOpenCartSheet(false)}>
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
         <Button
           onClick={() => setOpenCartSheet(true)}
           variant="outline"
@@ -100,7 +128,13 @@ function HeaderRightContent() {
         <UserCartWrapper
           setOpenCartSheet={setOpenCartSheet}
           cartItems={
+<<<<<<< HEAD
             cartItems?.items?.length > 0 ? cartItems.items : []
+=======
+            cartItems && cartItems.items && cartItems.items.length > 0
+              ? cartItems.items
+              : []
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
           }
         />
       </Sheet>
@@ -109,12 +143,20 @@ function HeaderRightContent() {
         <DropdownMenuTrigger asChild>
           <Avatar className="bg-black">
             <AvatarFallback className="bg-black text-white font-extrabold">
+<<<<<<< HEAD
               {user?.userName?.[0]?.toUpperCase() || "U"}
+=======
+              {user?.userName[0].toUpperCase()}
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
             </AvatarFallback>
           </Avatar>
         </DropdownMenuTrigger>
         <DropdownMenuContent side="right" className="w-56">
+<<<<<<< HEAD
           <DropdownMenuLabel>Logged in as {user?.userName || "User"}</DropdownMenuLabel>
+=======
+          <DropdownMenuLabel>Logged in as {user?.userName}</DropdownMenuLabel>
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => navigate("/shop/account")}>
             <UserCog className="mr-2 h-4 w-4" />
@@ -141,7 +183,10 @@ function ShoppingHeader() {
           <HousePlug className="h-6 w-6" />
           <span className="font-bold">Ecommerce</span>
         </Link>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="lg:hidden">
@@ -154,7 +199,10 @@ function ShoppingHeader() {
             <HeaderRightContent />
           </SheetContent>
         </Sheet>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
         <div className="hidden lg:block">
           <MenuItems />
         </div>

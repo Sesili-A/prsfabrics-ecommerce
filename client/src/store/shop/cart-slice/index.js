@@ -113,4 +113,8 @@ const shoppingCartSlice = createSlice({
   },
 });
 
+<<<<<<< HEAD
 export default shoppingCartSlice.reducer;
+=======
+export default shoppingCartSlice.reducer;
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e

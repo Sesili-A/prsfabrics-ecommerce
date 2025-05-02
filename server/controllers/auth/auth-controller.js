@@ -1,10 +1,18 @@
+<<<<<<< HEAD
+=======
+require("dotenv").config();
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../../models/User");
 
 //register
 const registerUser = async (req, res) => {
+<<<<<<< HEAD
   const { userName, email, password } = req.body;
+=======
+  const { userName, email, password, role="user"} = req.body;
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
 
   try {
     const checkUser = await User.findOne({ email });
@@ -19,6 +27,10 @@ const registerUser = async (req, res) => {
       userName,
       email,
       password: hashPassword,
+<<<<<<< HEAD
+=======
+      role,
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
     });
 
     await newUser.save();

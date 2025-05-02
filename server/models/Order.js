@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 // server/models/Order.js
+=======
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
 const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema({
@@ -29,6 +32,7 @@ const OrderSchema = new mongoose.Schema({
   orderUpdateDate: Date,
   paymentId: String,
   payerId: String,
+<<<<<<< HEAD
 
   // make this a sparse unique index
   stripeSessionId: {
@@ -36,6 +40,8 @@ const OrderSchema = new mongoose.Schema({
     unique: true,
     sparse: true
   }
+=======
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

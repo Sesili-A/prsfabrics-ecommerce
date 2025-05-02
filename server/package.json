@@ -12,11 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+<<<<<<< HEAD
     "cloudinary": "^2.6.0",
+=======
+    "cloudinary": "^2.4.0",
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+<<<<<<< HEAD
     "express-fileupload": "^1.5.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.3",
@@ -25,5 +30,12 @@
     "nodemon": "^3.1.4",
     "paypal-rest-sdk": "^1.8.1",
     "streamifier": "^0.1.1"
+=======
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.3",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.4",
+    "paypal-rest-sdk": "^1.8.1"
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
   }
 }

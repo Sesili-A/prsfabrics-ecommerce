@@ -204,4 +204,8 @@ module.exports = {
   capturePayment,
   getAllOrdersByUser,
   getOrderDetails,
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e

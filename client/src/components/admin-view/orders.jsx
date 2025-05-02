@@ -10,6 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+<<<<<<< HEAD
 import ShoppingOrderDetailsView from "./order-details";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -33,16 +34,49 @@ function ShoppingOrders() {
     dispatch(getAllOrdersByUserId(user?.id));
   }, [dispatch]);
 
+=======
+import AdminOrderDetailsView from "./order-details";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getAllOrdersForAdmin,
+  getOrderDetailsForAdmin,
+  resetOrderDetails,
+} from "@/store/admin/order-slice";
+import { Badge } from "../ui/badge";
+
+function AdminOrdersView() {
+  const [openDetailsDialog, setOpenDetailsDialog] = useState(false);
+  const { orderList, orderDetails } = useSelector((state) => state.adminOrder);
+  const dispatch = useDispatch();
+
+  function handleFetchOrderDetails(getId) {
+    dispatch(getOrderDetailsForAdmin(getId));
+  }
+
+  useEffect(() => {
+    dispatch(getAllOrdersForAdmin());
+  }, [dispatch]);
+
+  console.log(orderDetails, "orderList");
+
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
   useEffect(() => {
     if (orderDetails !== null) setOpenDetailsDialog(true);
   }, [orderDetails]);
 
+<<<<<<< HEAD
   console.log(orderDetails, "orderDetails");
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>Order History</CardTitle>
+=======
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>All Orders</CardTitle>
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
       </CardHeader>
       <CardContent>
         <Table>
@@ -92,7 +126,11 @@ function ShoppingOrders() {
                         >
                           View Details
                         </Button>
+<<<<<<< HEAD
                         <ShoppingOrderDetailsView orderDetails={orderDetails} />
+=======
+                        <AdminOrderDetailsView orderDetails={orderDetails} />
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
                       </Dialog>
                     </TableCell>
                   </TableRow>
@@ -105,4 +143,8 @@ function ShoppingOrders() {
   );
 }
 
+<<<<<<< HEAD
 export default ShoppingOrders;
+=======
+export default AdminOrdersView;
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e

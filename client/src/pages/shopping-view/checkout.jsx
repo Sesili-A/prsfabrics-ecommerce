@@ -130,4 +130,8 @@ function ShoppingCheckout() {
   );
 }
 
+<<<<<<< HEAD
 export default ShoppingCheckout;
+=======
+export default ShoppingCheckout;
+>>>>>>> f2402ecf8fc686229f4949b58ad681cfb4d3a88e
